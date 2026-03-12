@@ -1,0 +1,132 @@
+.admin-container{
+padding:20px;
+background:#f1f5f9;
+min-height:100vh;
+font-family:Arial, Helvetica, sans-serif;
+}
+
+/* TIRANGA HEADER */
+
+.tiranga-header{
+position: relative;
+background: linear-gradient(
+to bottom,
+#FF9933 0%,
+#FF9933 33%,
+white 33%,
+white 66%,
+#138808 66%,
+#138808 100%
+);
+
+text-align:center;
+padding:25px;
+border-radius:10px;
+margin-bottom:25px;
+box-shadow:0 4px 12px rgba(0,0,0,0.15);
+
+}
+
+.tiranga-header h1{
+margin:0;
+font-size:28px;
+}
+
+.tiranga-header h2{
+margin:5px 0;
+font-size:22px;
+}
+
+.tiranga-header p{
+margin:0;
+font-weight:bold;
+}
+
+/* MAP */
+
+.admin-map{
+height:350px;
+margin-bottom:30px;
+border-radius:10px;
+overflow:hidden;
+box-shadow:0 4px 10px rgba(0,0,0,0.2);
+}
+
+/* CHART */
+
+.admin-chart{
+display:flex;
+justify-content:center;
+margin-bottom:30px;
+}
+
+/* TABLE */
+
+.admin-table{
+width:100%;
+background:white;
+border-radius:10px;
+overflow:hidden;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+border-collapse:collapse;
+}
+
+.admin-table th{
+background:#16a34a;
+color:white;
+padding:12px;
+}
+
+.admin-table td{
+padding:10px;
+text-align:center;
+border-bottom:1px solid #ddd;
+}
+
+/* BUTTONS */
+
+.start-btn{
+background:#f59e0b;
+color:white;
+border:none;
+padding:6px 12px;
+border-radius:5px;
+cursor:pointer;
+}
+
+.start-btn:hover{
+background:#d97706;
+}
+
+.resolve-btn{
+background:#16a34a;
+color:white;
+border:none;
+padding:6px 12px;
+border-radius:5px;
+cursor:pointer;
+}
+
+.resolve-btn:hover{
+background:#15803d;
+}
+.logout-btn{
+
+position:absolute;
+right:25px;
+top:20px;
+background:#dc2626;
+color:white;
+border:none;
+padding:8px 16px;
+border-radius:6px;
+cursor:pointer;
+font-weight:bold;
+
+}
+
+.logout-btn:hover{
+
+background:#b91c1c;
+
+}
