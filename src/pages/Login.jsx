@@ -17,8 +17,8 @@ function Login() {
     try {
 
       if (isLogin) {
-
-        const res = await API.post("/auth/login", { email, password });
+        const res = await API.post("/api/auth/login", { email, password });
+        //const res = await API.post("/auth/login", { email, password });
 
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("role", res.data.user.role);
@@ -31,8 +31,8 @@ function Login() {
         }
 
       } else {
-
-        await API.post("/auth/register", { name, email, password });
+        await API.post("/api/auth/register", { name, email, password });
+        //await API.post("/auth/register", { name, email, password });
 
         alert("Registration successful");
         setIsLogin(true);
