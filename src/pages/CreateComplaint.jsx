@@ -26,7 +26,7 @@ function CreateComplaint() {
           formData.append("image", image);
         }
 
-        await API.post("/api/complaints", formData, {
+        await API.post("/complaints", formData, {
           headers: {
             "Content-Type": "multipart/form-data"
           }
