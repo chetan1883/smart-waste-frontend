@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import API from "../api/axios";
 
 function CreateComplaint() {
+
   const [description, setDescription] = useState("");
   const [image, setImage] = useState(null);
 
@@ -9,6 +10,7 @@ function CreateComplaint() {
     e.preventDefault();
 
     try {
+
       const formData = new FormData();
       formData.append("description", description);
 
@@ -18,8 +20,8 @@ function CreateComplaint() {
 
       await API.post("/api/complaints", formData, {
         headers: {
-          "Content-Type": "multipart/form-data",
-        },
+          "Content-Type": "multipart/form-data"
+        }
       });
 
       alert("Complaint submitted successfully ✅");
@@ -28,13 +30,14 @@ function CreateComplaint() {
       setImage(null);
 
     } catch (error) {
-      console.error(error);
+      console.log(error);
       alert(error.response?.data?.message || "Error submitting complaint");
     }
   };
 
   return (
     <div>
+
       <h1>Create Complaint 📝</h1>
 
       <form onSubmit={handleSubmit}>
@@ -58,6 +61,7 @@ function CreateComplaint() {
         <button type="submit">Submit Complaint</button>
 
       </form>
+
     </div>
   );
 }
