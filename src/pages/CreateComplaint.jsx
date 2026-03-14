@@ -11,27 +11,39 @@ function CreateComplaint() {
 
     try {
 
-      const formData = new FormData();
-      formData.append("description", description);
+      // Get current location
+      navigator.geolocation.getCurrentPosition(async (position) => {
 
-      if (image) {
-        formData.append("image", image);
-      }
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
 
-      await API.post("/api/complaints", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data"
+        const formData = new FormData();
+        formData.append("description", description);
+        formData.append("latitude", latitude);
+        formData.append("longitude", longitude);
+
+        if (image) {
+          formData.append("image", image);
         }
+
+        await API.post("/api/complaints", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data"
+          }
+        });
+
+        alert("Complaint submitted successfully ✅");
+
+        setDescription("");
+        setImage(null);
+
       });
 
-      alert("Complaint submitted successfully ✅");
-
-      setDescription("");
-      setImage(null);
-
     } catch (error) {
+
       console.log(error);
       alert(error.response?.data?.message || "Error submitting complaint");
+
     }
   };
 
@@ -58,7 +70,9 @@ function CreateComplaint() {
 
         <br /><br />
 
-        <button type="submit">Submit Complaint</button>
+        <button type="submit">
+          Submit Complaint
+        </button>
 
       </form>
 
