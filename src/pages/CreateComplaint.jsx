@@ -2,22 +2,38 @@ import React, { useState } from "react";
 import API from "../api/axios";
 
 function CreateComplaint() {
+
   const [description, setDescription] = useState("");
   const [image, setImage] = useState(null);
+  const [latitude, setLatitude] = useState("");
+  const [longitude, setLongitude] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
+
       const formData = new FormData();
       formData.append("description", description);
-      formData.append("image", image);
+      formData.append("latitude", latitude);
+      formData.append("longitude", longitude);
 
-      await API.post("/api/complaints", formData);
+      if (image) {
+        formData.append("image", image);
+      }
+
+      await API.post("/complaints", formData, {
+        headers: {
+          "Content-Type": "multipart/form-data"
+        }
+      });
 
       alert("Complaint submitted successfully ✅");
+
       setDescription("");
       setImage(null);
+      setLatitude("");
+      setLongitude("");
 
     } catch (error) {
       console.log(error);
@@ -30,6 +46,7 @@ function CreateComplaint() {
       <h1>Create Complaint 📝</h1>
 
       <form onSubmit={handleSubmit}>
+
         <textarea
           placeholder="Write your complaint..."
           value={description}
@@ -46,7 +63,26 @@ function CreateComplaint() {
 
         <br /><br />
 
+        <input
+          type="text"
+          placeholder="Latitude"
+          value={latitude}
+          onChange={(e) => setLatitude(e.target.value)}
+        />
+
+        <br /><br />
+
+        <input
+          type="text"
+          placeholder="Longitude"
+          value={longitude}
+          onChange={(e) => setLongitude(e.target.value)}
+        />
+
+        <br /><br />
+
         <button type="submit">Submit Complaint</button>
+
       </form>
     </div>
   );
